@@ -28,63 +28,9 @@ A compact smart-room demo that monitors **smoke**, **light**, and **motion**, di
   * App auth
   * Persist telemetry & events
 
-
-
-
-## 🏗️ Repository Structure
-
-```
-SafeHouse/
-├─ firmware/
-│  └─ esp32/
-│     ├─ safehouse_esp32.ino         # Your working sketch
-│     └─ README_firmware.md          # (optional) wiring pics & notes
-├─ app/
-│  └─ flutter/                       # Your Flutter project
-├─ cloud/
-│  └─ supabase_schema.sql            # (optional) telemetry schema
-├─ docs/
-│  ├─ wiring-diagram.png
-│  ├─ maquette-photos/
-│  └─ flowchart.png
-├─ .gitignore
-└─ README.md                         # this file
-```
-
----
-
-## 🔑 Configuration (Firmware)
-
-Edit these in the sketch:
-
-```cpp
-// WiFi
-const char* ssid = "<YOUR_WIFI_SSID>";
-const char* password = "<YOUR_WIFI_PASSWORD>";
-
-// HiveMQ Cloud
-const char* mqtt_server = "<YOUR_CLUSTER>.s1.eu.hivemq.cloud";
-const int   mqtt_port   = 8883; // TLS
-const char* mqtt_user   = "<YOUR_MQTT_USERNAME>";
-const char* mqtt_pass   = "<YOUR_MQTT_PASSWORD>";
-```
-
-> For submissions, avoid committing real secrets. Consider `secrets.h` (ignored) and a `secrets.example.h` template.
-
----
-
 ## 📡 MQTT Topics & Payloads
 
 ### Publish: `safehouse/data`
-
-```json
-{
-  "smoke": 0,
-  "light": "dark",
-  "motion": 1,
-  "door": "open"
-}
-```
 
 * `smoke`: `0`/`1`
 * `light`: `"dark"` or `"light"`
@@ -102,13 +48,12 @@ const char* mqtt_pass   = "<YOUR_MQTT_PASSWORD>";
 4. Flutter app subscribes `safehouse/data` & shows telemetry.
 5. From app, publish `{"servo":"open"}` to `safehouse/servo` → door opens; auto‑closes after 5s.
 
-
 ## 👥 Credits / Roles
 
 * **Hardware & Maquette:** *Mohammed Saad*
 * **Firmware (ESP32 + MQTT + LCD + Keypad):** *Ziad Ahmed Morsy*
 * **Flutter App (UI + MQTT + Supabase):** *Monzir Ali*
-* **Cloud (HiveMQ, Node‑RED, Supabase):** *Yousef Mohammed*
+* **Cloud (HiveMQ, Supabase):** *Yousef Mohammed*
 * **Docs, Report & Presentation:** *Abdallah*
 * **Wokwi Simulation:** *Nour*
 
