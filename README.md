@@ -4,6 +4,8 @@ A compact smart-room demo that monitors **smoke**, **light**, and **motion**, di
 
 ---
 
+## Wokwi Simulation: https://wokwi.com/projects/440166813677089793
+
 ## ✨ Features
 
 * **ESP32 firmware**
